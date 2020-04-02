@@ -1,39 +1,35 @@
+// import java.util.*;
 import java.time.LocalDate;
-import java.time.Period;
-import java.util.*; 
-import java.util.temporal.ChronoUnit; 
+import java.time.Period; 
+import java.time.temporal.ChronoUnit; 
 
 public class Student {
-	String firstName; 
-	String lastName; 
+	String firstName = ""; 
+	String lastName = "";
 	String middleInitial; 
 	int dob_day;  // dob - data of birth 
 	int dob_month; 
 	int dob_year;
-	
+
 	public String getFullName () {
-   
-		// This method should return the full name    
-		//    concatenating first name, middle initial and last name   ...
-		String fullName = firstName + middleInitial + lastName;
+		String fullName = firstName + " " + middleInitial + " " + lastName;
 		return fullName;
-		} 
-	public int age( ) {
+	} 
+	public int age () {
 		int age = 0; 
-		LocalDate pdate = LocalDate.of(year, month, day);
+		LocalDate pdate = LocalDate.of(dob_year, dob_month, dob_day);
 		LocalDate now = LocalDate.now();
-		
+
 		Period diff = Period.between(pdate, now);
 		age = diff.getYears();
 		return age;
 	}
-	public long elaspedDays (int y, int m, int d) {
+	public long elapsedDays (int y, int m, int d) {
 		long days = 0;
-		
-		LocalDate pdate = LocalDate.of(year,  month,  day);
-		LocalDate now = LocalDate.of(y,  m,  d);
-		days = java.time.temporal.ChronoUnit.DAYS.between(pdate, now);
+
+		LocalDate pdate = LocalDate.of(dob_year,  dob_month, dob_day);
+		LocalDate now = LocalDate.of(y, m, d);
+		days = ChronoUnit.DAYS.between(pdate, now);
 		return days;
 	}
-	}
-
+}
